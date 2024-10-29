@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+    <record id="view_stock_scrap_form_inherit" model="ir.ui.view">
+        <field name="name">stock.scrap.form.inherit</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="shrinkage_reason_id" string="Shrinkage Reason"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_scrap_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.scrap.tree.inherit</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="shrinkage_reason_id" options="{'no_create': True}" context="{'form_view_initial_mode': 'edit'}"/>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>

@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_picking_form_inherit_manager" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.manager</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="location_id" position="after">
+                <field name="manager_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.tree.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="manager_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_search_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <field name="picking_type_id" position="after">
+                <field name="manager_id"/>
+                <filter string="My Pickings (Manager)" name="my_picking_manager" domain="[('manager_id', '=', uid)]"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="action_picking_tree_ready_inherit" model="ir.actions.act_window">
+        <field name="name">stock.picking.action_picking_tree_ready_inherit</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">tree,kanban,form,calendar,map</field>
+        <field name="context">{'search_default_my_picking_manager': 1}</field>
+        <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+        <field name="domain">[]</field>
+    </record>
+</odoo>

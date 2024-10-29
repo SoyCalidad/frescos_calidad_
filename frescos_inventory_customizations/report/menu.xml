@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="popularity_table"
+              name="Products Popularity Table"
+              sequence="14"
+              parent="stock.menu_stock_inventory_control" />
+
+    <menuitem id="report_excel_popularity_table"
+              name="Products Popularity Table"
+              action="report_popularity_table"
+              sequence="15"
+              parent="popularity_table" />
+</odoo>

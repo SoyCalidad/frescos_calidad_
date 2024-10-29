@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <record id="report_popularity_table_excel" model="ir.ui.view">
+        <field name="name">product.popularity.table.wizard.form</field>
+        <field name="model">product.popularity.table.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Products Popularity Table">
+                <footer>
+                    <button name="generate_report"
+                            type="object"
+                            string="Print"
+                            class="oe_highlight"
+                            icon="fa-download" />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="report_popularity_table">
+        <field name="name">Products Popularity Table</field>
+        <field name="res_model">product.popularity.table.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="report_popularity_table_excel" />
+        <field name="target">new</field>
+    </record>
+    
+</odoo>

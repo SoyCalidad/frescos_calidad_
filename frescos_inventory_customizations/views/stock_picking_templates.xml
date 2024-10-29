@@ -1,0 +1,19 @@
+<odoo>
+    <template id="report_picking_inherit" inherit_id="stock.report_picking">
+        <xpath expr="//div[@name='div_sched_date']" position="after">
+            <div t-if="o.manager_id" class="col-auto" name="div_manager">
+                <strong>Manager:</strong>
+                <p t-field="o.manager_id.name"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_delivery_document_inherit" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='div_sched_date']" position="after">
+            <div t-if="o.manager_id" class="col-auto" name="div_manager_id">
+                <strong>Manager:</strong>
+                <p t-field="o.manager_id.name"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

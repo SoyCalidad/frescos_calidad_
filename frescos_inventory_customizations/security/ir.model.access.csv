@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_shrinkage_reason,access.shrinkage.reason,model_shrinkage_reason,,1,1,1,1
+access_product_popularity_table_wizard,access.product.popularity.table.wizard,model_product_popularity_table_wizard,,1,1,1,1
