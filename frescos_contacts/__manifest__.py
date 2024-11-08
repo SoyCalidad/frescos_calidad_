@@ -4,7 +4,7 @@
 
 {
     'name': 'FRESCOS Contacts',
-    'category': 'Sales/CRM',
+    'category': '',
     'sequence': 150,
     'author': "soycalidad",
     'summary': 'Centralize your address book',

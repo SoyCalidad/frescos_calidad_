@@ -1,0 +1,38 @@
+<odoo>
+    <record id="view_shrinkage_reason_form" model="ir.ui.view">
+        <field name="name">shrinkage.reason.form</field>
+        <field name="model">shrinkage.reason</field>
+        <field name="arch" type="xml">
+            <form string="Shrinkage Reason">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_shrinkage_reason_tree" model="ir.ui.view">
+        <field name="name">shrinkage.reason.tree</field>
+        <field name="model">shrinkage.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Shrinkage Reasons">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_shrinkage_reason" model="ir.actions.act_window">
+        <field name="name">Shrinkage Reasons</field>
+        <field name="res_model">shrinkage.reason</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a new shrinkage reason.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_shrinkage_reason" name="Shrinkage Reasons" action="action_shrinkage_reason" parent="stock.menu_stock_root"/>
+</odoo>
