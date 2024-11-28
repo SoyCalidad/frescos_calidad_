@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_carrier_user,access_custom_carrier_user,model_custom_carrier,,1,1,1,1
+access_delivery_route_user,access_delivery_route_user,model_delivery_route,,1,1,1,1
+access_delivery_truck_user,access_delivery_truck_user,model_delivery_truck,,1,1,1,1
+access_delivery_truck_expense_user,access_delivery_truck_expense_user,model_delivery_truck_expense,,1,1,1,1
