@@ -5,6 +5,18 @@ class PopularityTableWizard(models.TransientModel):
     _name = 'product.popularity.table.wizard'
     _description = 'Products Popularity Table'
 
+    product_ids = fields.Many2many(
+        'product.template',
+        compute='_compute_product_ids',
+        string='Products'
+    )
+
+    @api.depends('product_ids')
+    def _compute_product_ids(self):
+        for wizard in self:
+            products = self.env['product.template'].search([('sales_count', '>', 0)])
+            wizard.product_ids = products
+            
     def generate_report(self):
         self.ensure_one()
         products = self.env['product.template'].search([('sales_count', '>', 0)])

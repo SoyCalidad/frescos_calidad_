@@ -1,0 +1,68 @@
+<odoo>
+    <!-- Vista en árbol para las rutas -->
+    <record id="view_delivery_route_tree" model="ir.ui.view">
+        <field name="name">delivery.route.tree</field>
+        <field name="model">delivery.route</field>
+        <field name="arch" type="xml">
+            <tree string="Zonas">
+                <field name="name"/>
+                <field name="start_time" widget="time"/>
+                <field name="end_time" widget="time"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista en formulario para las rutas -->
+    <record id="view_delivery_route_form" model="ir.ui.view">
+        <field name="name">delivery.route.form</field>
+        <field name="model">delivery.route</field>
+        <field name="arch" type="xml">
+            <form string="Zona">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_pickings"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-truck"
+                            attrs="{'invisible': [('active', '=', False)]}">
+                                <field name="picking_count" widget="statinfo" string="Pickings Asignados"/>
+                        </button>
+                        <button name="action_view_trucks"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-truck"
+                            attrs="{'invisible': [('active', '=', False)]}">
+                                <field name="truck_count" widget="statinfo" string="Camiones Asignados"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name" style="font-size: 20px; height: 40px;"/>
+                        <field name="description"/>
+                        <group>
+                            <field name="start_time" widget="time"/>
+                            <field name="end_time" widget="time"/>
+                        </group>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para acceder a las rutas -->
+    <record id="action_delivery_route" model="ir.actions.act_window">
+        <field name="name">Zonas</field>
+        <field name="res_model">delivery.route</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay zonas aún.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú para las rutas -->
+    <menuitem id="menu_delivery_root" name="Logística"  parent="stock.menu_stock_config_settings" sequence="10"/>
+    <menuitem id="menu_delivery_route" parent="menu_delivery_root" name="Zonas" action="action_delivery_route" sequence="10"/>
+</odoo>
