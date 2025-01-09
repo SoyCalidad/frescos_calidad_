@@ -1,0 +1,68 @@
+<odoo>
+    <record id="view_picking_form_inherit_carrier" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.carrier</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="partner_street" placeholder="Street..." class="o_address_street" readonly="1"/>
+                <field name="partner_street2" placeholder="Street 2..." class="o_address_street" readonly="1"/>
+                <field name="partner_city" placeholder="City" class="o_address_city" readonly="1"/>
+                <field name="partner_state_id" class="o_address_state" placeholder="State" readonly="1"/>
+                <field name="partner_zip" placeholder="ZIP" class="o_address_zip" readonly="1"/>
+                <field name="partner_country_id" placeholder="Country" class="o_address_country" readonly="1"/>
+
+            </field>
+            <field name="location_id" position="before">
+                <field name="route_id"/>
+                <field name="carrier_id"/>
+                <field name="truck_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.tree.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="route_id" optional="show"/>
+                <field name="carrier_id" optional="show"/>
+                <field name="truck_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_search_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <field name="picking_type_id" position="after">
+                <!-- Campo para la Ruta -->
+                <field name="route_id" string="Ruta" domain="[('active', '=', True)]"/>
+                <filter string="Ruta" name="my_picking_route" domain="[('route_id', '!=', False)]"/>
+
+                <!-- Filtro para el Transportista (Carrier) -->
+                <field name="carrier_id" string="Transportista" domain="[('active', '=', True)]"/>
+                <filter string="Transportista" name="my_picking_carrier" domain="[('carrier_id', '!=', False)]"/>
+
+                <!-- Filtro para el Camión -->
+                <field name="truck_id" string="Camión" domain="[('active', '=', True)]"/>
+                <filter string="Camión" name="my_picking_truck" domain="[('truck_id', '!=', False)]"/>
+            
+
+                <!-- Agrupamientos -->
+                <field name="route_id" context="{'group_by': 'route_id'}"/>
+                <filter string="Agrupar por Ruta" name="group_by_route" context="{'group_by': 'route_id'}"/>
+                
+                <field name="carrier_id" context="{'group_by': 'carrier_id'}"/>
+                <filter string="Agrupar por Transportista" name="group_by_carrier" context="{'group_by': 'carrier_id'}"/>
+                
+                <field name="truck_id" context="{'group_by': 'truck_id'}"/>
+                <filter string="Agrupar por Camión" name="group_by_truck" context="{'group_by': 'truck_id'}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

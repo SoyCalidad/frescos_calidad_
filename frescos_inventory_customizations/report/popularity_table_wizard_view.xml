@@ -5,6 +5,14 @@
         <field name="model">product.popularity.table.wizard</field>
         <field name="arch" type="xml">
             <form string="Products Popularity Table">
+    
+                    <field name="product_ids" nolabel="1" mode="tree">
+                        <tree editable="false">
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    
+                
                 <footer>
                     <button name="generate_report"
                             type="object"
