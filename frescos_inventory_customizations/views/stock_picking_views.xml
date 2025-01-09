@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <field name="location_id" position="after">
                 <field name="manager_id"/>
+                <field name="delivered_to"/>
             </field>
         </field>
     </record>
